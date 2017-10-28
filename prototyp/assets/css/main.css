@@ -1,0 +1,128 @@
+/**
+ * Base
+ */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/**
+ * Components
+ */
+@font-face {
+  font-family: 'Klavika';
+  src: url("/assets/webfonts/KlavikaBasicWebRegular.eot");
+  /* IE9 Compat Modes */
+  src: url("/assets/webfonts/KlavikaBasicWebRegular.eot?#iefix") format("embedded-opentype"), url("/assets/webfonts/KlavikaBasicWebRegular.woff2") format("woff2"), url("/assets/webfonts/KlavikaBasicWebRegular.woff") format("woff");
+  /* Pretty Modern Browsers */ }
+
+@font-face {
+  font-family: 'Klavika Bold';
+  src: url("/assets/webfonts/KlavikaBasicWebBold.eot");
+  /* IE9 Compat Modes */
+  src: url("/assets/webfonts/KlavikaBasicWebBold.eot?#iefix") format("embedded-opentype"), url("/assets/webfonts/KlavikaBasicWebBold.woff2") format("woff2"), url("/assets/webfonts/KlavikaBasicWebBold.woff") format("woff");
+  /* Pretty Modern Browsers */ }
+
+body {
+  background: #cdcdcd;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, rgba(255, 0, 0, 0), #cdcdcd);
+  /*Safari 5.1-6*/
+  background: -o-linear-gradient(right, rgba(255, 0, 0, 0), #cdcdcd);
+  /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right, rgba(255, 0, 0, 0), #cdcdcd);
+  /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(255, 0, 0, 0), #cdcdcd);
+  /*Standard*/
+  margin: 0 auto;
+  font-family: "Klavika", sans-serif; }
+
+h2 {
+  margin: 50px 0 0 0;
+  text-align: center;
+  font-family: "Klavika Bold", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  font-size: 50px;
+  color: #d70000; }
+
+:focus {
+  outline: 0; }
+
+#wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  top: 0;
+  position: relative; }
+
+#snap {
+  font-size: 50px;
+  display: block;
+  background: #ff0000;
+  /* For browsers that do not support gradients */
+  border-radius: 50%;
+  border: 10px solid #d70000;
+  padding: 10px;
+  height: 130px;
+  width: 130px;
+  margin-left: auto;
+  margin-right: auto; }
+  #snap:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1); }
+  #snap img {
+    opacity: 0.5;
+    width: 80px; }
+
+.output {
+  position: relative;
+  top: 0;
+  width: 48%;
+  font-family: "Klavika", sans-serif;
+  font-size: 50px;
+  height: 100%;
+  display: inline-block; }
+
+.input {
+  position: relative;
+  width: 48%;
+  height: 100%;
+  display: inline-block; }
+
+video, canvas {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  display: inline-block; }
