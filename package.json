@@ -1,0 +1,17 @@
+{
+  "name": "gulp-browsersync-sass-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "node node_modules/gulp/bin/gulp.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-sass": "^3.1.0"
+  }
+}
