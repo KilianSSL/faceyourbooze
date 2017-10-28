@@ -94,3 +94,17 @@ video, canvas {
   padding: 30px;
   display: inline-block;
 }
+
+.drink {
+  position: absolute;
+  display: none;
+  width: 240px;
+  height: 240px;
+
+  transform: translateX(-40%) translateY(20%);
+
+  &.small-drink {
+    width: 130px;
+    height: 130px;
+  }
+}
