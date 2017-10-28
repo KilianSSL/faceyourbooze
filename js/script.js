@@ -1,25 +1,43 @@
+var score = ['VERY_UNLIKELY', 'UNLIKELY', 'POSSIBLE', 'LIKELY', 'VERY_LIKELY'];
+var drinks = [
+    {
+        name: 'Mumie',
+        image: ''
+    }, {
+        name: 'Strawberry',
+        image: ''
+    }, {
+        name: 'Brain',
+        image: ''
+    }, {
+        name: 'Fruchtcocktail',
+        image: ''
+    }
+];
+
 $(document).ready(function () {
     console.log("ready!");
+    var video = $('#video')[0];
+    // Elements for taking the snapshot
+    var canvas = $('#canvas')[0];
+    console.log(canvas);
+    var context = canvas.getContext('2d');
 
-    document.getElementById('button').addEventListener('click', function () {
-        var files = document.getElementById('file').files;
-        if (files.length > 0) {
-            getBase64(files[0]);
-        }
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Not adding `{ audio: true }` since we only want video now
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        });
+    }
+
+    $('#snap').on('click', function () {
+        context.drawImage(video, 0, 0, 640, 480);
+
+        postImage(canvas.toDataURL('image/jpeg', 1.0));
     });
 });
-
-function getBase64(file) {
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-        console.log(reader.result);
-        postImage(reader.result);
-    };
-    reader.onerror = function (error) {
-        console.log('Error: ', error);
-    };
-}
 
 function postImage_success(result) {
     //test = result;
