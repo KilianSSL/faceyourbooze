@@ -3,7 +3,6 @@ var drinks = [
     {
         name: 'Mumie',
         image: 'mummy.svg',
-        score: 0,
         properties: {
             sorrowLikelihood: 5,
             angerLikelihood: 3,
@@ -14,7 +13,6 @@ var drinks = [
     }, {
         name: 'Vampire',
         image: 'vampire.svg',
-        score: 0,
         properties: {
             sorrowLikelihood: 2,
             angerLikelihood: 4,
@@ -25,7 +23,6 @@ var drinks = [
     }, {
         name: 'Brain',
         image: 'brain.svg',
-        score: 0,
         properties: {
             sorrowLikelihood: 5,
             angerLikelihood: 5,
@@ -37,7 +34,6 @@ var drinks = [
     {
         name: 'Fruchtcocktail',
         image: 'nofundrink.svg',
-        score: 0,
         properties: {
             sorrowLikelihood: 2,
             angerLikelihood: 5,
@@ -49,7 +45,6 @@ var drinks = [
     {
         name: 'Bierle',
         image: 'beer.svg',
-        score: 0,
         properties: {
             sorrowLikelihood: 5,
             angerLikelihood: 1,
@@ -61,7 +56,6 @@ var drinks = [
     {
         name: 'Shot, aber pronto',
         image: 'shot.svg',
-        score: 0,
         properties: {
             sorrowLikelihood: 5,
             angerLikelihood: 5,
@@ -90,6 +84,8 @@ $(document).ready(function () {
     }
 
     $('#snap').on('click', function () {
+        $('#drink').hide();
+
         context.drawImage(video, 0, 0, 640, 480);
 
         postImage(canvas.toDataURL('image/jpeg', 1.0));
@@ -110,14 +106,12 @@ function postImage_success(result) {
 
 function getBooze(faceAnnotations) {
     var trackedProperties = ['sorrowLikelihood', 'headwearLikelihood', 'joyLikelihood', 'angerLikelihood', 'surpriseLikelihood'];
+    var mouthCenter = getMouth(faceAnnotations.landmarks)[0].position;
     var finalDrink = {};
-
-    console.log(faceAnnotations);
 
     for (var i in trackedProperties) {
         if (trackedProperties.hasOwnProperty(i)) {
             var imageScoreForProperty = score.indexOf(faceAnnotations[trackedProperties[i]]);
-            console.log(trackedProperties[i], imageScoreForProperty);
             for (var j in drinks) {
                 if (drinks.hasOwnProperty(j)) {
                     if (imageScoreForProperty >= drinks[j].properties[trackedProperties[i]]) {
@@ -135,10 +129,7 @@ function getBooze(faceAnnotations) {
             return drink.score === maxScore;
         });
 
-        console.log(choosenDrinks);
-
         if(choosenDrinks.length > 1) {
-            console.log('drin');
             finalDrink = choosenDrinks[Math.floor(Math.random()*choosenDrinks.length)];
         } else {
             finalDrink = choosenDrinks[0];
@@ -147,10 +138,6 @@ function getBooze(faceAnnotations) {
         finalDrink = drinks[5];
         smallDrink = true;
     }
-
-    console.log(choosenDrinks);
-
-    var mouthCenter = getMouth(faceAnnotations.landmarks)[0].position;
 
     var $drink = $('#drink');
     $drink.css('top', mouthCenter.y + 'px').css('left', mouthCenter.x + 'px');
