@@ -67,11 +67,9 @@ var drinks = [
 ];
 
 $(document).ready(function () {
-    console.log("ready!");
     var video = $('#video')[0];
     // Elements for taking the snapshot
     var canvas = $('#canvas')[0];
-    console.log(canvas);
     var context = canvas.getContext('2d');
 
     // Get access to the camera!
