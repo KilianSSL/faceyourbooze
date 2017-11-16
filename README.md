@@ -6,7 +6,7 @@ Simply starter pack for [Web Professionals](https://web-professionals.ch/) HTML/
 * Sass
 * Autoprefixer (needs to be uncommented in gulpfile.js)
 
-### Usage
+### Usage Sample
 ```
 npm install
 
